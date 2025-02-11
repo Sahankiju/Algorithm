@@ -1,9 +1,44 @@
 const box = document.querySelector(".box");
+const number = document.querySelector(".number");
+const num_btn=document.querySelector(".num_enter")
+const ele_btn=document.querySelector(".ele_enter")
+const before=document.querySelector(".before")
+const after=document.querySelector(".after")
+const head=document.querySelector(".head")
 
-array = [10, 5, 6, 1, 2, 9, 4, 6, 11, 0];
 
-let j = array.length;
-let newRow = document.createElement("div");
+
+let array=[];
+
+num_btn.addEventListener('click',take_numofele);
+ele_btn.addEventListener('click',input);
+let num_ele;
+function take_numofele(){
+  num_ele=number.value;
+  number.value=NaN;
+  before.classList.add("hidden");
+  after.classList.remove("hidden");
+  num_btn.classList.add("hidden");
+  ele_btn.classList.remove("hidden");
+}
+
+
+function input(){
+  array.push(Number(number.value));
+  console.log(typeof(Number(number.value)));
+  if(array.length==num_ele){
+    head.innerHTML="Sorted";
+    after.classList.add("hidden");
+    ele_btn.classList.add("hidden");
+    number.classList.add("hidden")
+    sorting();
+  }
+}
+
+
+
+function sorting(){
+  let newRow = document.createElement("div");
 newRow.classList.add("row");
 box.appendChild(newRow);
 for (let i = 0; i < array.length; i++) {
@@ -43,4 +78,4 @@ const sort = (arr, k) => {
 for (let i = 0; i < array.length; i++) {
   sort(array, i + 1);
 }
-arrr;
+}
